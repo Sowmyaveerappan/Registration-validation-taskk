@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.heading{
+    color: rgb(3, 43, 30);
+}
+.container{
+    width: 30%;
+    height:70%;
+    background-color: rgb(185, 226, 228);
+    border: solid black 1px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    left:400px;
+    top: 160px;
+    }
+    .form{
+        padding: 20px;
+    }
+    #form-name, #form-mail, #form-pass{
+        padding: 15px;
+    }
+    #submit{
+        background-color: rgb(11, 63, 53);
+        color: white;
+        padding: 5px;
+        position: relative;
+        left:70px;
+
+    }

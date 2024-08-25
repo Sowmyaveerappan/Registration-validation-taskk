@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="heading">REGISTRATION FORM</h3>
+        <div class="form">
+            <div id="form-name">
+                <label for="InputBoxname">Name</label><br>
+                <input type="text" id="InputBoxname"><br>
+                <span id="name-error" class="error"></span>
+            </div>
+
+
+            <div id="form-mail">
+                <label for="email">E-mail</label><br>
+                <input type="email" id="email"><br>
+                <span id="email-error" class="error"></span>
+            </div>
+
+
+            <div id="form-pass">
+                <label for="pass">Password</label><br>
+                <input type="password" id="pass"><br>
+                <span id="password-error" class="error"></span>
+            </div>
+
+
+            <button id="submit" onclick="saveform()">Submit</button>
+        </div>
+        <div id="error-message"></div>
+    </div>
+    <script>
+        function checkfields(field, fieldName, id) {
+            console.log("id", id)
+            if (field === "") {
+                var message = fieldName + " field should not be empty.<br>";
+                document.getElementById(id).innerHTML = message;
+                return false;
+            }
+            document.getElementById(id).innerHTML = ""; // Clear the error message if the field is not empty
+            return true;
+        }
+
+        function saveform() {
+            var name = document.getElementById("InputBoxname").value;
+            var email = document.getElementById("email").value;
+            var pass = document.getElementById("pass").value;
+
+            var isNameValid = checkfields(name, "Name", "name-error",);
+            var isEmailValid = checkfields(email, "E-mail", "email-error");
+            var isPasswordValid = checkfields(pass, "Password", "password-error");
+
+            if (!isNameValid || !isEmailValid || !isPasswordValid) {
+
+                document.getElementById("name-error").style.color = "red";
+                document.getElementById("email-error").style.color = "red";
+                document.getElementById("password-error").style.color = "red";
+                return;
+
+
+            }
+
+
+
+            // Additional checks after ensuring fields are not empty
+            if (!email.includes("@") || !email.includes(".")) {
+                var message = "Please enter a valid email address.<br>";
+                document.getElementById("email-error").innerHTML = message;
+                return;
+            }
+
+            if (pass.length < 6) {
+                var message = "Password length must be at least 6 characters.<br>";
+                document.getElementById("password-error").innerHTML = message;
+                return;
+            }
+
+            if (isNameValid && isEmailValid && isPasswordValid) {
+
+                //clear the form fields
+                document.getElementById("InputBoxname").value = "";
+
+                document.getElementById("email").value = "";
+
+                document.getElementById("pass").value = "";
+            }
+
+
+
+            document.getElementById("name-error").style.color = "red";
+            document.getElementById("email-error").style.color = "red";
+            document.getElementById("password-error").style.color = "red"
+
+
+
+        }
+    </script>
+
+
+</body>
+
+</html>
